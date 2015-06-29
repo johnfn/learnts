@@ -28,17 +28,26 @@
           font-weight: 200;
         }
 
+        h1 {
+          margin-bottom: 10px;
+        }
+
+        .author {
+          color: #999;
+          font-style: italic;
+        }
+
         .heading {
           color: #111;
           text-decoration: none;
         }
 
         a {
-          color: #111;
+          color: inherit;
         }
 
-        .heading:hover {
-          color: #555;
+        a:hover {
+          opacity: 0.6;
         }
 
         .initially-hidden {
@@ -94,12 +103,12 @@
         @media (min-width: 720px) {
           aside {
             position: absolute;
-            width: 250px;
+            width: 300px;
             right: 40px;
           }
 
           section {
-            margin-right: 350px;
+            margin-right: 400px;
           }
         }
 
@@ -130,8 +139,12 @@
           width: 250px;
           border-right: 1px solid lightgray;
           overflow-y: scroll;
-
+          background-color: rgb(248, 248, 248);
           font-size: 14px;
+        }
+
+        nav a {
+          text-decoration: none;
         }
 
         nav .nav-heading {
@@ -142,7 +155,7 @@
         }
 
         .nav-padding {
-          padding: 10px 20px 0 20px;
+          padding: 30px 20px 0 20px;
         }
 
         .nav-item-2 {
@@ -177,6 +190,9 @@
 
   <section>
     <h1><a href="#nav-top" class="heading" id="nav-top">A Quick Guide to TypeScript</a></h1>
+    <div class="author">
+      Written by <a href="http://www.grantmathews.com">Grant Mathews</a> and published on June 29, 2015.
+    </div>
   </section>
 
   <section>
@@ -355,7 +371,7 @@ console.log(x * x);
     <span class="annotation"> Silly me, I forgot that I said <code>x</code> was a string literally one line ago! </span>
 
     <img src="assets/err-dumb.png" />
-    <span class="annotation"> Visual Studio helpfully pointing out our mistake. </span>
+    <div class="annotation"> Visual Studio helpfully pointing out our mistake. </div>
 
     <p>
       Other basic JavaScript types work in mostly the same way. TypeScript has <code>number</code> and <code>boolean</code> types. It also has <code>any</code>, which is helpful for when you're porting JavaScript code and you want to get things to work first before refining the types.
@@ -456,8 +472,8 @@ var guy: Person = {firstName: "Some", lastName "Person", age: 32};
 console.log(guy.firstName);
    </pre>
 
-   <p>
-    Notice that in every example I've given so far, if we were to strip away the type information, the TypeScript we write is exactly the same as any JavaScript we would write. This is typical. Remember, TypeScript is a superset of JavaScript.
+    <p>
+      Remember, all type information is stripped away when we compile to JavaScript. TypeScript will know about this <code>Person</code> interface, JavaScript will not.
     </p>
 
     <aside>
@@ -469,6 +485,10 @@ console.log(guy.firstName);
         TypeScript has a keyword <code>declare</code> which allows you to say "Hey TypeScript, I know that you don't recognize this variable, but just trust me on this - it exists." For example, if you wrote <code>declare var blah: any;</code>, TypeScript would say "Alright, I'm just going to assume that <code>blah</code> is a real variable". This is very handy if part of your codebase is in JavaScript and part is in TypeScript - you can simply stub out the parts you haven't ported over to TypeScript with <code>declare</code>s, and as you port them, you can remove the <code>declare</code> statements.
       </p>
     </aside>
+   <p>
+    Notice that in every example I've given so far, if we were to strip away the type information, the TypeScript we write is exactly the same as any JavaScript we would write. This is typical. Remember, TypeScript is a superset of JavaScript.
+    </p>
+
     <p>
       You could just rename mycode.js to mycode.ts and <em>it would compile!</em> Then you could add in type annotations as necessary. This is the advantage of the superset approach.
     </p>
@@ -539,8 +559,6 @@ function css(propertyName: string, value: string|number): JQuery {
   }
 }
 </pre>
-
-
   </section>
 
   <section>
@@ -576,13 +594,28 @@ var squareNumbers = numbers.map((i, value) => value * 2);
 console.log(squareNumbers);
 </pre>
 
+    <aside>
+      <p>
+        And then in a few weeks you'll end up writing 100% Haskell. :-)
+      </p>
+    </aside>
+
     <p>
       This will look familiar to anyone who's used CoffeeScript before. It may just be syntactic sugar, but if you try it out yourself, you'll find that when functions feel so lightweight and easy to make, you'll end up writing in a functional style more often. Previously obscure code that used <code>map</code>, <code>filter</code> and <code>reduce</code> will start to look - could it be? - almost readable!
     </p>
 
+    <h3><a href="#nav-string" class="heading" id="nav-string"> String interpolation </a></h3>
+
     <p>
-      And then in a few weeks you'll end up writing 100% Haskell. :-)
+      I admit, this is straight up syntactic sugar. Still: it's very nice to have.
     </p>
+
+     <pre>
+var numberOfProblems = 99;
+var problemType = "TypeError";
+
+console.log(`I got ${numberOfProblems} problems, but a ${problemType} ain't one.`);
+</pre>
 
     <h3><a href="#nav-classes" class="heading" id="nav-classes"> Classes </a></h3>
 
@@ -591,7 +624,7 @@ console.log(squareNumbers);
     </p>
 
     <p>
-      Well, regardless, classes are here to stay - and with them come a host of other associated features. Tap on the underlined words for descriptions.
+      Well, regardless, classes are coming to JavaScript - and with them come a host of other associated features. Tap on the underlined words for descriptions.
     </p>
 
     <aside class="initially-hidden" data-hidden="true" data-associatedid="members">
@@ -650,24 +683,20 @@ var nicePerson = new Person("Some Person", 32, "brown");
 console.log(nicePerson.description);
 </pre>
 
-    <h3><a href="#nav-string" class="heading" id="nav-string"> String interpolation </a></h3>
-
-    <p>
-      I admit, this is straight up syntactic sugar. Still: It's very nice to have.
-    </p>
-
-     <pre>
-var numberOfProblems: number = 99;
-var problemType: string = "TypeError";
-
-console.log(`I got ${numberOfProblems} problems, but a ${problemType} ain't one.`);
-</pre>
-
     <h3><a href="#nav-for-of" class="heading" id="nav-for-of"> for...of </a></h3>
 
     <p>
-      The <code>for...of</code> loop allows you to loop over all the values in an array or an object. Again, this is nothing revolutionary - it's just convenient.
+      The <code>for...of</code> loop allows you to loop over all the values in an array or an object. Again, this is nothing revolutionary - it's just convenient, especially after being burned by how we almost had <code>for...in</code> before we realized it was broken with arrays <em>and</em> broken with objects with prototypical inheritance.
     </p>
+
+    <pre>
+var myArray = [1, 3, 5, 7];
+
+// Wow, it works just like you'd expect! Amazing!
+for (value of myArray) {
+  console.log(myArray);
+}
+    </pre>
   </section>
   </body>
 </html>

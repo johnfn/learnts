@@ -21,10 +21,14 @@ var buildTableOfContents = function() {
 
   for (var heading of headings) {
     var tocElement: HTMLDivElement = document.createElement("div");
+    var link: HTMLAnchorElement = document.createElement("a");
 
-    tocElement.innerHTML = heading.innerText;
     tocElement.className += " nav-item-" + heading.tagName[1];
     toc.appendChild(tocElement);
+
+    link.innerHTML = heading.innerText;
+    link.href = "#" + heading.getElementsByTagName("a").item(0).id;
+    tocElement.appendChild(link);
   }
 };
 

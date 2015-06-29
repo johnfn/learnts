@@ -17,9 +17,12 @@ var buildTableOfContents = function () {
     for (var _i = 0; _i < headings.length; _i++) {
         var heading = headings[_i];
         var tocElement = document.createElement("div");
-        tocElement.innerHTML = heading.innerText;
+        var link = document.createElement("a");
         tocElement.className += " nav-item-" + heading.tagName[1];
         toc.appendChild(tocElement);
+        link.innerHTML = heading.innerText;
+        link.href = "#" + heading.getElementsByTagName("a").item(0).id;
+        tocElement.appendChild(link);
     }
 };
 var highlightCode = function () {
