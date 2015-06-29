@@ -1,0 +1,554 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
+      <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/default.min.css">
+
+      <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700%7CPT+Sans:400">
+      <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Ubuntu%3A300%2C400%2C500%2C700&amp;ver=4.2.2" type="text/css" media="all">
+
+      <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
+      <script src="main.js"> </script>
+
+      <style>
+        h1, h2, h3, h4, h5, h6 {
+          font-family: "Ubuntu", "Helvetica Neue", Helvetica, Arial, sans-serif;
+          font-weight: 400;
+        }
+
+        h2, h3 {
+          border-bottom: 1px solid #eee;
+        }
+
+        .initially-hidden {
+          display: none;
+        }
+
+        .code-annotation {
+          border: 1px solid gray;
+          border-radius: 3px;
+          cursor: pointer;
+        }
+
+        :not(pre) > code {
+          padding: 2px 4px;
+          font-size: 90%;
+          color: #c7254e;
+          background-color: #f9f2f4;
+          border-radius: 4px;
+        }
+
+        .code-annotation:hover {
+          opacity: .8;
+        }
+
+        html {
+          font-family: "PT Serif", Georgia, "Times New Roman", serif;
+          color: #111;
+        }
+
+        section {
+          margin-left: 20%;
+          margin-right: 40%;
+        }
+
+        /* TODO */
+        aside {
+          border-top: 1px solid rgb(232, 229, 229);
+          border-bottom: 1px solid rgb(232, 229, 229);
+          position: absolute;
+          width: 300px;
+          right: 100px;
+        }
+
+        img {
+          max-width: 100%
+        }
+
+        .annotation {
+          color: gray;
+          font-size: small;
+        }
+      </style>
+  </head>
+  <body>
+
+  <section>
+    <h1>A Quick Guide to TypeScript</h1>
+  </section>
+
+  <section>
+    <h2>What is TypeScript</h2>
+
+    <p>
+      TypeScript is JavaScript with a small layer of static typing on top.
+    </p>
+
+    "But I saw some TypeScript source one time, and it didn't look anything like JavaScript!"
+
+    <aside>
+      <p>
+        (If you're not familiar with these features, don't worry, we'll get into them!)
+      </p>
+
+      <p>
+
+      </p>
+    </aside>
+
+    <p>
+      What you're really saying here is that JavaScript doesn't look like JavaScript :-) Outside of types, the only features TypeScript has added are features planned for the next version of JavaScript, ES6. These include the <code>class</code> keyword, string interpolation, fat-arrow functions (e.g. <code>x => x * 2</code>), and a wealth of other goodies. JavaScript's future looks a little different than what it is right now, and TypeScript is just bringing us there a little faster.
+    </p>
+  </section>
+
+  <section>
+    <h2> Common arguments and misconceptions about Typescript </h2>
+
+    <p>
+      If you're already sold on TypeScript, skip to the next section :-)
+    </p>
+
+    <h3> It's made by Microsoft and Microsoft is evil </h3>
+
+    <p>
+      The Microsoft of today is not the Microsoft of 10 years ago. Possibly to counteract the ill-will they've accrued over the years, Microsoft has done a lot of public, open-source good. In the past year alone, they've:
+    </p>
+
+    <ul>
+      <li> Open-sourced C# </li>
+      <li> Open-sourced core .NET </li>
+      <li> Created <em>Visual Studio Code</em>, a cross-platform (!) version of Visual Studio </li>
+    </ul>
+
+    <h3> People are going to forget about it in a year </h3>
+
+    <p>
+      Have you been on the front-end for a while? This reasoning applies to <em>every technology we use</em>. If you're using any JavaScript framework or CSS precompiler, you're probably using technologies that people are going to forget about one day.
+    </p>
+
+    <p>
+      I'd go as far as to suggest that TypeScript will have more longevity than other modern libraries: it is backed by both Microsoft and Google (through Angular 2.0), so I feel reasonably confident it's going to be around for a while longer.
+    </p>
+
+    <h4> But JavaScript isn't going away! </h4>
+
+    <p>
+      <a href="https://github.com/WebAssembly/design/blob/master/HighLevelGoals.md"> Are you sure?</a>
+    </p>
+
+    <h3> CoffeeScript has nicer syntax </h3>
+
+    <p>
+      Admittedly, this is true. But <em>I don't think that better syntax is the metric upon which we should compare all programming languages</em>. I think that what we should really care about is <em>time saved programming</em>. How much time do you lose fighting JavaScript's syntax? Not too much? A few moments ordering your <code>)</code>'s, <code>]</code>'s, and <code>}</code>'s, perhaps - but then again, any code editor can usually handle that.
+    </p>
+
+    <p>
+      Now, how much time do you spend trying to do things that the compiler could assist you with, if only it had a little more information? How many times a day do you:
+    </p>
+
+    <ul>
+      <li> forget the ordering of arguments to a function (that autocomplete could provide)? </li>
+      <li> look up function documentation (that an IDE could provide you)? </li>
+      <li> grep through source files for function references during a refactor (which an IDE will do with 100% accuracy)? </li>
+      <li> spend 5-10 minutes on a bug before realizing you made a minor typo (that TypeScript wouldn't even compile)? </li>
+    </ul>
+
+    <aside>
+      <p>
+        Alright, that may be slightly tautological, but you see what I mean. :-)
+      </p>
+    </aside>
+    <p>
+      Imagine how much time you could save if an entire category of time-wasting problems just disappeared.
+    </p>
+
+    <h3> It won't play well with JavaScript libraries </h3>
+
+    <p>
+      There's no nice way to say this: this is <strong>wrong</strong>. TypeScript is almost JavaScript already, so it plays at least as nice with JavaScript libraries as JavaScript itself. Generally though, TypeScript plays <em>better</em> with JavaScript libraries than JavaScript! This is because the TypeScript community has made <a href="https://github.com/borisyankov/DefinitelyTyped">definitions</a> for almost every JavaScript library. This means we can get autocompletion and documentation that <em>we can't normally get in JavaScript</em>:
+    </p>
+
+    <img src="http://lh5.ggpht.com/_0j4bzarlOBg/S3FQy-9UZDI/AAAAAAAAArM/hjVu0Y5xrXg/image_thumb%5B9%5D.png?imgmax=800" />
+    <span class="annotation"> Whoa, jQuery autocompletion and documentation! </span>
+
+    <p>
+      (And by the way, this also works in <a href="https://github.com/Quramy/tsuquyomi">vim</a>, <a href="https://github.com/Microsoft/TypeScript-Sublime-Plugin">Sublime Text</a>, <a href="https://github.com/aki2o/emacs-tss">emacs</a>, and many more.)
+    </p>
+
+    <aside>
+      <p>
+        Seriously, try to find any other altjs which makes it <em>easier</em> to deal with external js dependencies.
+      </p>
+    </aside>
+    <p>
+      This puts us a giant step ahead of <em>every single other altjs language</em>, because we don't have to sacrifice JavaScript's ecosystem.
+    </p>
+
+    <h3> It's fringe, so hiring will be impossible </h3>
+
+    <p>
+      Is CoffeeScript an impendiment to hiring today? No? Was it <em>ever?</em> Were recruiters ripping their hair out, saying "if only I could just find a decent CoffeeScript engineer?" Of course not, because even if <em>no one knew CoffeeScript</em>, any competent programmer could learn it in half a day. That's a rounding error to the amount of time it takes to onboard programmers to a codebase.
+    </p>
+
+    <p>
+       Ok, it's great that you agree, because TypeScript is just as easy to pick up as CoffeeScript.
+    </p>
+  </section>
+
+  <section>
+    <h2> Let's learn some TypeScript! </h2>
+
+    <h3> Type Annotations </h3>
+    <p>
+      Let's start with the most important thing:
+    </p>
+
+    <aside>
+      <p>
+        <strong>Note:</strong> this code is actually considered poor style, because TypeScript can <em>infer</em> types. Saying <code>var x = 6;</code> is sufficent for TypeScript to verify that <code>x</code> is indeed a <code>number</code>, so the <code>: number</code> annotation is redundant.
+      </p>
+
+      <p>
+        I included it only so you see what type annotations look like.
+      </p>
+    </aside>
+
+    <pre><code>
+var x: string = "Hello TypeScript!";
+
+console.log(x);
+    </code></pre>
+
+    <p>
+      Congratulations! You just told the compiler that the variable <code>x</code> is a <code>string</code>. Now, if you start using it incorrectly, you'll get errors.
+    </p>
+
+    <pre><code>
+var x: string = "Hello!";
+
+console.log(x * x);
+</code></pre>
+    <span class="annotation"> Silly me, I forgot that I said <code>x</code> was a string literally one line ago! </span>
+
+    <img src="assets/err-dumb.png" />
+    <span class="annotation"> Visual Studio helpfully pointing out our mistake. </span>
+
+    <p>
+      Other basic JavaScript types work in mostly the same way. TypeScript has <code>number</code> and <code>boolean</code> types. It also has <code>any</code>, which is helpful for when you're porting JavaScript code and you want to get things to work first before refining the types.
+    </p>
+
+    <h4> Lists </h4>
+
+    <p>
+      TypeScript splits array types into two categories:
+    </p>
+
+    <ul>
+      <li> lists that are arbitrarily long, but all elements are the same type (homogenous) </li>
+      <li> lists that have a definite length, but elements could be of different types (heterogenous) </li>
+    </ul>
+
+    <p>
+      We naturally specify the types of these in different ways.
+    </p>
+
+    <h5> Homogenous </h5>
+
+    <p>
+      Easy: we use square brackets. If we have a list of <code>number</code>s, we just say <code>number[]</code>.
+
+      <pre><code>
+var testScores: number[] = [98, 82, 80, 91, 100, 36];
+      </code></pre>
+    </p>
+
+    <h5> Heterogenous </h5>
+
+    <aside>
+      <p>
+        It is usually not a good idea to use hetereogenous lists in a program - an object is almost always a better choice because we can explicitly indicate what each value means by giving the key a good name.
+      </p>
+
+      <p>
+        TypeScript provides features like this (and the union type, forthcoming) mostly so that existing JavaScript libraries can be typed as explicitly as possible.
+      </p>
+    </aside>
+
+    <p>
+      Say we have a list that represents a person. It is always 2 strings followed by a number - first name, last name and age. Then we'd do something like this:
+    </p>
+
+    <pre><code>
+var person: [string, string, number] = ["Some", "Person", 32];
+   </code></pre>
+
+   <h4> Objects </h4>
+
+   <p>
+    Again, TypeScript splits objects into two categories, based on typical JavaScript usage. We have key-value objects that have arbitrarily many key-value pairs of the same type, and record type objects that have a fixed size, but without any guarantees on the contents.
+   </p>
+
+   <h5> Arbitrarily large key-value stores </h5>
+
+   <pre><code>
+var occupationsForPeople: {[key: string]: string} = {
+  "Some Guy": "Plumber",
+  "Other Guy": "Electrician",
+  "Third Guy": "Barista"
+};
+</code></pre>
+
+  <h5> Records </h5>
+
+  <p> Let's rewrite our person object from before in a cleaner way: </p>
+
+   <pre><code>
+interface Person {
+  firstName: string;
+  lastName: string;
+  age: number;
+}
+
+var guy: Person = {firstName: "Some", lastName "Person", age: 32};
+
+console.log(guy.firstName);
+   </code></pre>
+
+   <p>
+    Notice that in every example I've given so far, if we were to strip away the type information, the TypeScript we write is exactly the same as any JavaScript we would write. This is typical. Remember, TypeScript is a superset of JavaScript.
+    </p>
+
+    <aside>
+      <p>
+        This approach could give you some errors if you refer to objects outside of the TypeScript file that the compiler can't find. You <em>could</em> simply ignore those errors - there's an option to tell TypeScript to output a js file even with type errors - but there's a better way:
+      </p>
+
+      <p>
+        TypeScript has a keyword <code>declare</code> which allows you to say "Hey TypeScript, I know that you don't recognize this variable, but just trust me on this - it exists." For example, if you wrote <code>declare var blah: any;</code>, TypeScript would say "Alright, I'm just going to assume that <code>blah</code> is a real variable". This is very handy if part of your codebase is in JavaScript and part is in TypeScript - you can simply stub out the parts you haven't ported over to TypeScript with <code>declare</code>s, and as you port them, you can remove the <code>declare</code> statements.
+      </p>
+    </aside>
+    <p>
+      You could just rename mycode.js to mycode.ts and <em>it would compile!</em> Then you could add in type annotations as necessary. This is the advantage of the superset approach.
+    </p>
+
+    <h4> Functions </h4>
+
+    <p>
+      Alright, let's talk a little about functions. In TypeScript, a function looks pretty much exactly like a function in JavaScript, except with type annotations! (Sounds familiar.)
+    </p>
+
+    <pre><code>
+function sayHello(name: string, age: number) {
+  console.log("Hello to " + name + ", a " + age + "-year-old organism!");
+}
+    </code></pre>
+
+    <p>
+      You can also specify that a variable is a function type. See here:
+    </p>
+
+    <pre><code>
+var getGreeting: (name: string, age: number) => string = function(name: string, age: number) {
+  return "Hello to " + name + ", a " + age + "-year-old organism!";
+}
+</code></pre>
+
+    <p>
+      Alright, this looks quite redundant, but remember: we would not normally type out the function type, since TypeScript can infer it for us!
+    </p>
+
+    <h4> Union Types </h4>
+
+    <p>
+      I'm sure you've used a library like jQuery that allow you to pass in, say, a string <strong>or</strong> a number into a function, and the function handles the two different types appropriately. For example, the <code>css</code> function of jQuery. In normal JavaScript:
+    </p>
+
+    <aside>
+      <p>
+        Let's ignore just how poor style this code actually is, and focus on the concepts :-)
+      </p>
+    </aside>
+
+    <pre><code>
+$("#myElement")
+  .css("width", 50)
+  .css("display", "block");
+</code></pre>
+
+    <p>
+      We'd specify the type of <code>css</code> like so:
+    </p>
+
+    <aside>
+      <p>
+        The <em>really</em> cool thing is that TypeScript is smart enough to know here that <code>value</code> is unambiguously a <code>string</code> when we get to the comment, since we did a <code>typeof</code> check above!
+      </p>
+    </aside>
+
+    <pre><code>
+function css(propertyName: string, value: string|number): JQuery {
+  if (typeof value == "string") {
+
+    // handle string type
+  }
+
+  if (typeof value === "number") {
+    // handle number
+  }
+}
+</code></pre>
+
+
+  </section>
+
+  <section>
+    <h3> ES6! </h3>
+
+    <p>
+      Type annotations are one half of why TypeScript is cool. The other half is the new features coming in from ES6. I'll take you on a quick tour. Remember: these are all features that will land in JavaScript soon. You just get to use them sooner (and without having to worry about cross-browser compatibility).
+    </p>
+
+    <h4> More convenient lambda syntax </h4>
+
+    <p>
+      Instead of writing this:
+    </p>
+
+    <pre><code>
+var numbers = [1, 2, 3, 4];
+var squareNumbers = numbers.map(function(i, value) {
+  return value * value;
+});
+
+console.log(squareNumbers);
+</code></pre>
+
+    <p>
+      You can just write this:
+    </p>
+
+    <pre><code>
+var numbers = [1, 2, 3, 4];
+var squareNumbers = numbers.map((i, value) => value * 2);
+
+console.log(squareNumbers);
+</code></pre>
+
+    <p>
+      This will look familiar to anyone who's used CoffeeScript before. It may just be syntactic sugar, but if you try it out yourself, you'll find that when functions feel so lightweight and easy to make, you'll end up writing in a functional style more often. Previously obscure code that used <code>map</code>, <code>filter</code> and <code>reduce</code> will start to look - could it be? - almost readable!
+    </p>
+
+    <p>
+      And then in a few weeks you'll end up writing 100% Haskell. :-)
+    </p>
+
+    <h4> Classes </h4>
+
+    <p>
+      Ah yes, OOP! Everyone loves OOP, right? Right..?
+    </p>
+
+    <p>
+      Well, regardless, classes are here to stay - and with them come a host of other associated features. Hover or tap on the underlined words for descriptions.
+    </p>
+
+    <aside class="initially-hidden" data-hidden="true" data-associatedid="members">
+      <p>
+        This is how you declare an instance variable in TypeScript.
+      </p>
+    </aside>
+
+    <aside class="initially-hidden" data-hidden="true" data-associatedid="timesaver">
+      <p>
+        Notice that we both declare an instance variable and indicate that it's a parameter of our constructor. This is a special feature that only works with constructors.
+      </p>
+    </aside>
+
+    <aside class="initially-hidden" data-hidden="true" data-associatedid="constructor">
+      <p>
+        This is the constructor for our class.
+      </p>
+    </aside>
+
+    <aside class="initially-hidden" data-hidden="true" data-associatedid="memberfunction">
+      <p>
+        This is how we declare member functions for classes.
+      </p>
+    </aside>
+
+    <aside class="initially-hidden" data-hidden="true" data-associatedid="getter">
+      <p>
+        If we target ES5 or above, we can also declare getters and setters! For example, if you were to do <code>myPerson.description</code>, it would call this function and return the result.
+      </p>
+    </aside>
+
+    <pre><code>
+class Person extends Entity implements ICanTalk {
+  <a class="code-annotation" id="members">public var height: number;</a>
+
+  public <a class="code-annotation" id="constructor">constructor</a>(
+    <a class="code-annotation" id="timesaver">public var name: string,</a>
+    protected var age: number,
+    private var hairColor: string
+  ) {
+    this.sayHello();
+  )
+
+  <a class="code-annotation" id="memberfunction">public sayHello() {</a>
+    console.log(`Hello from ${this.name}`);
+  }
+
+  <a class="code-annotation" id="getter">public get description(): String {</a>
+    return `This is ${this.name}, a ${this.age}-year-old fellow with ${this.hairColor} hair.`;
+  }
+}
+
+var nicePerson = new Person("Some Person", 32, "brown");
+
+console.log(nicePerson.description);
+</code></pre>
+
+    <h4> String interpolation </h4>
+
+    <p>
+      I admit, this is straight up syntactic sugar. Still: It's very nice to have.
+    </p>
+
+     <pre><code>
+var numberOfProblems: number = 99;
+var problemType: string = "TypeError";
+
+console.log(`I got ${numberOfProblems} problems, but a ${problemType} ain't one.`);
+</code></pre>
+
+    <h4> for...of </h4>
+
+    <p>
+      The <code>for...of</code> loop allows you to loop over all the values in an array or an object. Again, this is nothing revolutionary - it's just convenient.
+    </p>
+
+
+  </section>
+
+  <section>
+    <pre><code>
+  var test: string = "whee";
+  declare var hljs: any;
+
+  <a class="code-annotation">var start = function() {</a>
+    highlightCode();
+  };
+
+  var highlightCode = function() {
+    var preNodes = Array.prototype.slice.call(document.getElementsByTagName("pre"));
+
+    for (var node of preNodes) {
+      hljs.highlightBlock(node);
+    }
+  };
+
+  document.addEventListener("DOMContentLoaded", start);
+    </code></pre>
+  </section>
+  </body>
+</html>
