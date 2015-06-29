@@ -20,6 +20,10 @@
           border-bottom: 1px solid #eee;
         }
 
+        h4, h5, h6 {
+          font-weight: 200;
+        }
+
         .initially-hidden {
           display: none;
         }
@@ -39,7 +43,7 @@
         }
 
         .code-annotation:hover {
-          opacity: .8;
+          opacity: 0.8;
         }
 
         html {
@@ -48,17 +52,32 @@
         }
 
         section {
-          margin-left: 20%;
-          margin-right: 40%;
+          margin-left: 10%;
+          margin-right: 10%;
         }
 
-        /* TODO */
         aside {
           border-top: 1px solid rgb(232, 229, 229);
           border-bottom: 1px solid rgb(232, 229, 229);
-          position: absolute;
-          width: 300px;
-          right: 100px;
+
+          color: gray;
+        }
+
+        aside strong {
+          color: black;
+        }
+
+        /* TODO */
+        @media (min-width: 720px) {
+          aside {
+            position: absolute;
+            width: 300px;
+            right: 30px;
+          }
+
+          section {
+            margin-right: 350px;
+          }
         }
 
         img {
@@ -90,10 +109,6 @@
       <p>
         (If you're not familiar with these features, don't worry, we'll get into them!)
       </p>
-
-      <p>
-
-      </p>
     </aside>
 
     <p>
@@ -119,6 +134,10 @@
       <li> Open-sourced core .NET </li>
       <li> Created <em>Visual Studio Code</em>, a cross-platform (!) version of Visual Studio </li>
     </ul>
+
+    <p>
+      "Yeah, but Microsoft could <em>still</em> be evil. This could all be a long con to screw us over later. Somehow." I think you're just being stubborn now. We have a lot of evidence that they've realized that screwing over developers is not the best strategy. You have to agree with me that in the last couple of years they have been at worst an <em>average</em> amount of evil, probably less evil than Facebook and certainly less evil than Apple. And we use Facebook and Apple products all the time, so why not use an open source altjs that Microsoft put out?
+    </p>
 
     <h3> People are going to forget about it in a year </h3>
 
@@ -196,9 +215,7 @@
   </section>
 
   <section>
-    <h2> Let's learn some TypeScript! </h2>
-
-    <h3> Type Annotations </h3>
+    <h2> Type Annotations </h2>
     <p>
       Let's start with the most important thing:
     </p>
@@ -237,7 +254,7 @@ console.log(x * x);
       Other basic JavaScript types work in mostly the same way. TypeScript has <code>number</code> and <code>boolean</code> types. It also has <code>any</code>, which is helpful for when you're porting JavaScript code and you want to get things to work first before refining the types.
     </p>
 
-    <h4> Lists </h4>
+    <h3> Lists </h3>
 
     <p>
       TypeScript splits array types into two categories:
@@ -282,7 +299,7 @@ var testScores: number[] = [98, 82, 80, 91, 100, 36];
 var person: [string, string, number] = ["Some", "Person", 32];
    </code></pre>
 
-   <h4> Objects </h4>
+   <h3> Objects </h3>
 
    <p>
     Again, TypeScript splits objects into two categories, based on typical JavaScript usage. We have key-value objects that have arbitrarily many key-value pairs of the same type, and record type objects that have a fixed size, but without any guarantees on the contents.
@@ -331,7 +348,7 @@ console.log(guy.firstName);
       You could just rename mycode.js to mycode.ts and <em>it would compile!</em> Then you could add in type annotations as necessary. This is the advantage of the superset approach.
     </p>
 
-    <h4> Functions </h4>
+    <h3> Functions </h3>
 
     <p>
       Alright, let's talk a little about functions. In TypeScript, a function looks pretty much exactly like a function in JavaScript, except with type annotations! (Sounds familiar.)
@@ -357,7 +374,7 @@ var getGreeting: (name: string, age: number) => string = function(name: string, 
       Alright, this looks quite redundant, but remember: we would not normally type out the function type, since TypeScript can infer it for us!
     </p>
 
-    <h4> Union Types </h4>
+    <h3> Union Types </h3>
 
     <p>
       I'm sure you've used a library like jQuery that allow you to pass in, say, a string <strong>or</strong> a number into a function, and the function handles the two different types appropriately. For example, the <code>css</code> function of jQuery. In normal JavaScript:
@@ -402,10 +419,10 @@ function css(propertyName: string, value: string|number): JQuery {
   </section>
 
   <section>
-    <h3> ES6! </h3>
+    <h2> ES6! </h2>
 
     <p>
-      Type annotations are one half of why TypeScript is cool. The other half is the new features coming in from ES6. I'll take you on a quick tour. Remember: these are all features that will land in JavaScript soon. You just get to use them sooner (and without having to worry about cross-browser compatibility).
+      Type annotations are one half of why TypeScript is cool. The other half is the new features coming in from ES6(+). I'll take you on a quick tour. Remember: these are all features that will land in JavaScript soon. You just get to use them sooner (and without having to worry about cross-browser compatibility).
     </p>
 
     <h4> More convenient lambda syntax </h4>
