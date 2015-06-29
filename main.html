@@ -52,7 +52,7 @@
         }
 
         section {
-          margin-left: 10%;
+          margin-left: 260px;
           margin-right: 10%;
         }
 
@@ -71,8 +71,8 @@
         @media (min-width: 720px) {
           aside {
             position: absolute;
-            width: 300px;
-            right: 30px;
+            width: 250px;
+            right: 40px;
           }
 
           section {
@@ -88,9 +88,34 @@
           color: gray;
           font-size: small;
         }
+
+        nav {
+          position: fixed;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          width: 250px;
+          border-right: 1px solid lightgray;
+        }
+
+        .nav-padding {
+          padding: 0 20px 0 20px;
+        }
       </style>
   </head>
   <body>
+
+  <nav>
+    <div class="nav-padding">
+      <h4> TypeScript Guide </h4>
+      <ol>
+        <li> Wow asdf sdf sdf sd f df df df d fd f df df df df </li>
+        <li> Wow </li>
+        <li> Wow </li>
+        <li> Wow </li>
+      </ol>
+    </div>
+  </nav>
 
   <section>
     <h1>A Quick Guide to TypeScript</h1>
@@ -107,7 +132,7 @@
 
     <aside>
       <p>
-        (If you're not familiar with these features, don't worry, we'll get into them!)
+        If you're not familiar with these features, don't worry, we'll get into them!
       </p>
     </aside>
 
@@ -117,11 +142,57 @@
   </section>
 
   <section>
+    <h2> Why should I use it? </h2>
+
+    <h3> Static Typing </h3>
+
+    <aside>
+      <p>
+        Another article... Tempting. :-)
+      </p>
+    </aside>
+    <p>
+      Fully getting into this would take another article this size, so I'll just say this. Studies have shown that the majority of your time programming is spent on finding bugs and maintaining old code. I've found that the better the type system is on a language, the more confident I am that the program is correct, and the more comfortable I'll feel in refactoring and changing the program later.
+    </p>
+
+    <p>
+      If you don't believe me, why not go listen to <a href="https://www.youtube.com/watch?v=1PhArSujR_A&feature=youtu.be&t=15m47s">John Carmack</a> say the same thing? He's a pretty smart guy.
+    </p>
+
+    <h3> You get the whole JavaScript ecosystem, plus more </h3>
+
+    <p>
+      TypeScript is almost JavaScript already, so it plays at least as nice with JavaScript libraries as JavaScript itself. Generally though, TypeScript plays <em>nicer</em> with JavaScript libraries than JavaScript! This is because the TypeScript community has made <a href="https://github.com/borisyankov/DefinitelyTyped">definitions</a> for almost every JavaScript library. This means we get <em>better</em> autocompletion and documentation than we do in JavaScript:
+    </p>
+
+    <img src="http://lh5.ggpht.com/_0j4bzarlOBg/S3FQy-9UZDI/AAAAAAAAArM/hjVu0Y5xrXg/image_thumb%5B9%5D.png?imgmax=800" />
+    <p class="annotation">
+      Whoa, jQuery autocompletion and documentation! (And by the way, this also works in <a href="https://github.com/Quramy/tsuquyomi">vim</a>, <a href="https://github.com/Microsoft/TypeScript-Sublime-Plugin">Sublime Text</a>, <a href="https://github.com/aki2o/emacs-tss">emacs</a>, and many more.)
+    </p>
+
+    <aside>
+      <p>
+        Seriously, try to find any other altjs which makes it <em>easier</em> to deal with external js dependencies.
+      </p>
+    </aside>
+    <p>
+      This puts us a giant step ahead of <em>every single other altjs language</em>, because we don't have to sacrifice JavaScript's ecosystem.
+    </p>
+  </section>
+
+  <section>
     <h2> Common arguments and misconceptions about Typescript </h2>
 
     <p>
       If you're already sold on TypeScript, skip to the next section :-)
     </p>
+
+    <h3> No one uses it! </h3>
+
+    <p> Oh really? </p>
+
+    <img src="assets/trendgraph.png" />
+    <span class="annotation"> Blue line is TypeScript, red line is CoffeeScript. TypeScript is currently exploding because at <strong>B</strong> Angular announced that they were using it in Angular 2.0. But you can see TypeScript was on a path to crush CoffeeScript even before that. :-) </span>
 
     <h3> It's made by Microsoft and Microsoft is evil </h3>
 
@@ -136,7 +207,7 @@
     </ul>
 
     <p>
-      "Yeah, but Microsoft could <em>still</em> be evil. This could all be a long con to screw us over later. Somehow." I think you're just being stubborn now. We have a lot of evidence that they've realized that screwing over developers is not the best strategy. You have to agree with me that in the last couple of years they have been at worst an <em>average</em> amount of evil, probably less evil than Facebook and certainly less evil than Apple. And we use Facebook and Apple products all the time, so why not use an open source altjs that Microsoft put out?
+      "Yeah, but Microsoft could <em>still</em> be evil. This could all be a long con to screw us over later. Somehow. Despite open sourcing all their core products and making them crossplatform." I think you're just being stubborn now. You must realize that recently they have been at worst an <em>average</em> amount of evil, probably less evil than Facebook and certainly less evil than Apple. And we use Facebook and Apple products all the time, so why not use an open source altjs that Microsoft put out?
     </p>
 
     <h3> People are going to forget about it in a year </h3>
@@ -181,28 +252,6 @@
       Imagine how much time you could save if an entire category of time-wasting problems just disappeared.
     </p>
 
-    <h3> It won't play well with JavaScript libraries </h3>
-
-    <p>
-      There's no nice way to say this: this is <strong>wrong</strong>. TypeScript is almost JavaScript already, so it plays at least as nice with JavaScript libraries as JavaScript itself. Generally though, TypeScript plays <em>better</em> with JavaScript libraries than JavaScript! This is because the TypeScript community has made <a href="https://github.com/borisyankov/DefinitelyTyped">definitions</a> for almost every JavaScript library. This means we can get autocompletion and documentation that <em>we can't normally get in JavaScript</em>:
-    </p>
-
-    <img src="http://lh5.ggpht.com/_0j4bzarlOBg/S3FQy-9UZDI/AAAAAAAAArM/hjVu0Y5xrXg/image_thumb%5B9%5D.png?imgmax=800" />
-    <span class="annotation"> Whoa, jQuery autocompletion and documentation! </span>
-
-    <p>
-      (And by the way, this also works in <a href="https://github.com/Quramy/tsuquyomi">vim</a>, <a href="https://github.com/Microsoft/TypeScript-Sublime-Plugin">Sublime Text</a>, <a href="https://github.com/aki2o/emacs-tss">emacs</a>, and many more.)
-    </p>
-
-    <aside>
-      <p>
-        Seriously, try to find any other altjs which makes it <em>easier</em> to deal with external js dependencies.
-      </p>
-    </aside>
-    <p>
-      This puts us a giant step ahead of <em>every single other altjs language</em>, because we don't have to sacrifice JavaScript's ecosystem.
-    </p>
-
     <h3> It's fringe, so hiring will be impossible </h3>
 
     <p>
@@ -230,21 +279,21 @@
       </p>
     </aside>
 
-    <pre><code>
+    <pre>
 var x: string = "Hello TypeScript!";
 
 console.log(x);
-    </code></pre>
+    </pre>
 
     <p>
       Congratulations! You just told the compiler that the variable <code>x</code> is a <code>string</code>. Now, if you start using it incorrectly, you'll get errors.
     </p>
 
-    <pre><code>
+    <pre>
 var x: string = "Hello!";
 
 console.log(x * x);
-</code></pre>
+</pre>
     <span class="annotation"> Silly me, I forgot that I said <code>x</code> was a string literally one line ago! </span>
 
     <img src="assets/err-dumb.png" />
@@ -274,9 +323,9 @@ console.log(x * x);
     <p>
       Easy: we use square brackets. If we have a list of <code>number</code>s, we just say <code>number[]</code>.
 
-      <pre><code>
+      <pre>
 var testScores: number[] = [98, 82, 80, 91, 100, 36];
-      </code></pre>
+      </pre>
     </p>
 
     <h5> Heterogenous </h5>
@@ -295,9 +344,9 @@ var testScores: number[] = [98, 82, 80, 91, 100, 36];
       Say we have a list that represents a person. It is always 2 strings followed by a number - first name, last name and age. Then we'd do something like this:
     </p>
 
-    <pre><code>
+    <pre>
 var person: [string, string, number] = ["Some", "Person", 32];
-   </code></pre>
+   </pre>
 
    <h3> Objects </h3>
 
@@ -307,19 +356,19 @@ var person: [string, string, number] = ["Some", "Person", 32];
 
    <h5> Arbitrarily large key-value stores </h5>
 
-   <pre><code>
+   <pre>
 var occupationsForPeople: {[key: string]: string} = {
   "Some Guy": "Plumber",
   "Other Guy": "Electrician",
   "Third Guy": "Barista"
 };
-</code></pre>
+  </pre>
 
   <h5> Records </h5>
 
   <p> Let's rewrite our person object from before in a cleaner way: </p>
 
-   <pre><code>
+   <pre>
 interface Person {
   firstName: string;
   lastName: string;
@@ -329,7 +378,7 @@ interface Person {
 var guy: Person = {firstName: "Some", lastName "Person", age: 32};
 
 console.log(guy.firstName);
-   </code></pre>
+   </pre>
 
    <p>
     Notice that in every example I've given so far, if we were to strip away the type information, the TypeScript we write is exactly the same as any JavaScript we would write. This is typical. Remember, TypeScript is a superset of JavaScript.
@@ -354,21 +403,21 @@ console.log(guy.firstName);
       Alright, let's talk a little about functions. In TypeScript, a function looks pretty much exactly like a function in JavaScript, except with type annotations! (Sounds familiar.)
     </p>
 
-    <pre><code>
+    <pre>
 function sayHello(name: string, age: number) {
   console.log("Hello to " + name + ", a " + age + "-year-old organism!");
 }
-    </code></pre>
+    </pre>
 
     <p>
       You can also specify that a variable is a function type. See here:
     </p>
 
-    <pre><code>
+    <pre>
 var getGreeting: (name: string, age: number) => string = function(name: string, age: number) {
   return "Hello to " + name + ", a " + age + "-year-old organism!";
 }
-</code></pre>
+</pre>
 
     <p>
       Alright, this looks quite redundant, but remember: we would not normally type out the function type, since TypeScript can infer it for us!
@@ -386,11 +435,11 @@ var getGreeting: (name: string, age: number) => string = function(name: string, 
       </p>
     </aside>
 
-    <pre><code>
+    <pre>
 $("#myElement")
   .css("width", 50)
   .css("display", "block");
-</code></pre>
+    </pre>
 
     <p>
       We'd specify the type of <code>css</code> like so:
@@ -402,7 +451,7 @@ $("#myElement")
       </p>
     </aside>
 
-    <pre><code>
+    <pre>
 function css(propertyName: string, value: string|number): JQuery {
   if (typeof value == "string") {
 
@@ -413,7 +462,7 @@ function css(propertyName: string, value: string|number): JQuery {
     // handle number
   }
 }
-</code></pre>
+</pre>
 
 
   </section>
@@ -431,25 +480,25 @@ function css(propertyName: string, value: string|number): JQuery {
       Instead of writing this:
     </p>
 
-    <pre><code>
+    <pre>
 var numbers = [1, 2, 3, 4];
 var squareNumbers = numbers.map(function(i, value) {
   return value * value;
 });
 
 console.log(squareNumbers);
-</code></pre>
+</pre>
 
     <p>
       You can just write this:
     </p>
 
-    <pre><code>
+    <pre>
 var numbers = [1, 2, 3, 4];
 var squareNumbers = numbers.map((i, value) => value * 2);
 
 console.log(squareNumbers);
-</code></pre>
+</pre>
 
     <p>
       This will look familiar to anyone who's used CoffeeScript before. It may just be syntactic sugar, but if you try it out yourself, you'll find that when functions feel so lightweight and easy to make, you'll end up writing in a functional style more often. Previously obscure code that used <code>map</code>, <code>filter</code> and <code>reduce</code> will start to look - could it be? - almost readable!
@@ -499,7 +548,7 @@ console.log(squareNumbers);
       </p>
     </aside>
 
-    <pre><code>
+    <pre>
 class Person extends Entity implements ICanTalk {
   <a class="code-annotation" id="members">public var height: number;</a>
 
@@ -523,7 +572,7 @@ class Person extends Entity implements ICanTalk {
 var nicePerson = new Person("Some Person", 32, "brown");
 
 console.log(nicePerson.description);
-</code></pre>
+</pre>
 
     <h4> String interpolation </h4>
 
@@ -531,12 +580,12 @@ console.log(nicePerson.description);
       I admit, this is straight up syntactic sugar. Still: It's very nice to have.
     </p>
 
-     <pre><code>
+     <pre>
 var numberOfProblems: number = 99;
 var problemType: string = "TypeError";
 
 console.log(`I got ${numberOfProblems} problems, but a ${problemType} ain't one.`);
-</code></pre>
+</pre>
 
     <h4> for...of </h4>
 
@@ -548,7 +597,7 @@ console.log(`I got ${numberOfProblems} problems, but a ${problemType} ain't one.
   </section>
 
   <section>
-    <pre><code>
+    <pre>
   var test: string = "whee";
   declare var hljs: any;
 
@@ -565,7 +614,7 @@ console.log(`I got ${numberOfProblems} problems, but a ${problemType} ain't one.
   };
 
   document.addEventListener("DOMContentLoaded", start);
-    </code></pre>
+    </pre>
   </section>
   </body>
 </html>

@@ -9,6 +9,8 @@ var highlightCode = function() {
   var preNodes = Array.prototype.slice.call(document.getElementsByTagName("pre"));
 
   for (var node of preNodes) {
+    node.innerHTML = node.innerHTML.trim();
+
     hljs.highlightBlock(node);
   }
 };
@@ -29,6 +31,10 @@ var addListeners = function() {
 
         if (node.dataset.associatedid == id) {
           node.style.display = "block";
+
+          node.addEventListener("mouseover", (ev: MouseEvent) => {
+
+          });
         }
       }
     });

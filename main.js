@@ -6,6 +6,7 @@ var highlightCode = function () {
     var preNodes = Array.prototype.slice.call(document.getElementsByTagName("pre"));
     for (var _i = 0; _i < preNodes.length; _i++) {
         var node = preNodes[_i];
+        node.innerHTML = node.innerHTML.trim();
         hljs.highlightBlock(node);
     }
 };
@@ -23,6 +24,8 @@ var addListeners = function () {
                 }
                 if (node.dataset.associatedid == id) {
                     node.style.display = "block";
+                    node.addEventListener("mouseover", function (ev) {
+                    });
                 }
             }
         });
