@@ -33,6 +33,10 @@
           text-decoration: none;
         }
 
+        a {
+          color: #111;
+        }
+
         .heading:hover {
           color: #555;
         }
@@ -66,10 +70,12 @@
         html {
           font-family: "PT Serif", Georgia, "Times New Roman", serif;
           color: #111;
+          font-size: 18px;
+          line-height: 1.5;
         }
 
         section {
-          margin-left: 260px;
+          margin-left: 280px;
           margin-right: 10%;
         }
 
@@ -130,7 +136,9 @@
 
         nav .nav-heading {
           font-weight: bold;
-          padding-bottom: 10px;
+          margin-bottom: 10px;
+          border-bottom: 1px solid rgb(197, 197, 197);
+          font-size: 24px;
         }
 
         .nav-padding {
@@ -140,18 +148,22 @@
         .nav-item-2 {
           padding-left: 0px;
           font-size: 16px;
+          padding-top: 3px;
         }
 
         .nav-item-3 {
           padding-left: 20px;
+          padding-top: 3px;
         }
 
         .nav-item-4 {
           padding-left: 40px;
+          padding-top: 3px;
         }
 
         .nav-item-5 {
           padding-left: 60px;
+          padding-top: 3px;
         }
       </style>
   </head>
@@ -159,7 +171,7 @@
 
   <nav>
     <div class="nav-padding">
-      <div class="nav-heading"> TypeScript Guide </nav>
+      <div class="nav-heading"> Table of Contents </nav>
     </div>
   </nav>
 
@@ -538,7 +550,7 @@ function css(propertyName: string, value: string|number): JQuery {
       Type annotations are one half of why TypeScript is cool. The other half is the new features coming in from ES6(+). I'll take you on a quick tour. Remember: these are all features that will land in JavaScript soon. You just get to use them sooner (and without having to worry about cross-browser compatibility).
     </p>
 
-    <h4><a href="#nav-lambda-syntax" class="heading" id="nav-lambda-syntax"> More convenient lambda syntax </a></h4>
+    <h3><a href="#nav-lambda-syntax" class="heading" id="nav-lambda-syntax"> More convenient lambda syntax </a></h3>
 
     <p>
       Instead of writing this:
@@ -572,7 +584,7 @@ console.log(squareNumbers);
       And then in a few weeks you'll end up writing 100% Haskell. :-)
     </p>
 
-    <h4><a href="#nav-classes" class="heading" id="nav-classes"> Classes </a></h4>
+    <h3><a href="#nav-classes" class="heading" id="nav-classes"> Classes </a></h3>
 
     <p>
       Ah yes, OOP! Everyone loves OOP, right? Right..?
@@ -638,7 +650,7 @@ var nicePerson = new Person("Some Person", 32, "brown");
 console.log(nicePerson.description);
 </pre>
 
-    <h4><a href="#nav-string" class="heading" id="nav-string"> String interpolation </a></h4>
+    <h3><a href="#nav-string" class="heading" id="nav-string"> String interpolation </a></h3>
 
     <p>
       I admit, this is straight up syntactic sugar. Still: It's very nice to have.
@@ -651,7 +663,7 @@ var problemType: string = "TypeError";
 console.log(`I got ${numberOfProblems} problems, but a ${problemType} ain't one.`);
 </pre>
 
-    <h4><a href="#h4" id="h4"> for...of </a></h4>
+    <h3><a href="#nav-for-of" class="heading" id="nav-for-of"> for...of </a></h3>
 
     <p>
       The <code>for...of</code> loop allows you to loop over all the values in an array or an object. Again, this is nothing revolutionary - it's just convenient.
