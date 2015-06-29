@@ -3,9 +3,10 @@ declare var hljs: any;
 /*
   This was an experiment to see how it would be to write JavaScript/TypeScript without jQuery.
 
-  It was a good learning experiment, but I wouldn't recommend anyone to actually code this way. (It's actually
-  pretty nice that TypeScript can recognize that, e.g., getElementsByTagName("div") returns an array of HTMLDivElement
-  rather than just an array of HTMLElement or worse - but wow, stuff gets verbose quickly.)
+  It was a good learning experiment, but I wouldn't recommend anyone to actually code this way, at least not without
+  making some sort of wrapper. (It's actually pretty nice that TypeScript can recognize that, e.g.,
+  getElementsByTagName("div") returns an array of HTMLDivElement rather than just an array of HTMLElement
+  or worse - but wow, stuff gets verbose quickly.)
 */
 
 var start = function() {
@@ -16,12 +17,13 @@ var start = function() {
 
 var buildTableOfContents = function() {
   var headings: HTMLHeadingElement[] = Array.prototype.slice.call(document.querySelectorAll("h2,h3,h4,h5,h6"));
-  var toc: HTMLDivElement = document.getElementsByTagName("nav").item(0).getElementsByTagName("div").item(0);
+  var toc = document.getElementsByTagName("nav").item(0).getElementsByTagName("div").item(0);
 
   for (var heading of headings) {
     var tocElement: HTMLDivElement = document.createElement("div");
 
     tocElement.innerHTML = heading.innerText;
+    tocElement.className += " nav-item-" + heading.tagName[1];
     toc.appendChild(tocElement);
   }
 };

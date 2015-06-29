@@ -1,9 +1,10 @@
 /*
   This was an experiment to see how it would be to write JavaScript/TypeScript without jQuery.
 
-  It was a good learning experiment, but I wouldn't recommend anyone to actually code this way. (It's actually
-  pretty nice that TypeScript can recognize that, e.g., getElementsByTagName("div") returns an array of HTMLDivElement
-  rather than just an array of HTMLElement or worse - but wow, stuff gets verbose quickly.)
+  It was a good learning experiment, but I wouldn't recommend anyone to actually code this way, at least not without
+  making some sort of wrapper. (It's actually pretty nice that TypeScript can recognize that, e.g.,
+  getElementsByTagName("div") returns an array of HTMLDivElement rather than just an array of HTMLElement
+  or worse - but wow, stuff gets verbose quickly.)
 */
 var start = function () {
     highlightCode();
@@ -17,6 +18,7 @@ var buildTableOfContents = function () {
         var heading = headings[_i];
         var tocElement = document.createElement("div");
         tocElement.innerHTML = heading.innerText;
+        tocElement.className += " nav-item-" + heading.tagName[1];
         toc.appendChild(tocElement);
     }
 };
