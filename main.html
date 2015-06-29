@@ -20,17 +20,21 @@
           font-weight: 400;
         }
 
-        h1, h2, h3, h4, h5, h6 > a {
-          text-decoration: none;
-          color: black;
-        }
-
         h2, h3 {
           border-bottom: 1px solid #eee;
         }
 
         h4, h5, h6 {
           font-weight: 200;
+        }
+
+        .heading {
+          color: #111;
+          text-decoration: none;
+        }
+
+        .heading:hover {
+          color: #555;
         }
 
         .initially-hidden {
@@ -93,6 +97,16 @@
           }
         }
 
+        @media (max-width: 720px) {
+          nav {
+            display: none;
+          }
+
+          section {
+            margin-left: 20px;
+          }
+        }
+
         img {
           max-width: 100%
         }
@@ -150,11 +164,11 @@
   </nav>
 
   <section>
-    <h1><a href="#nav-top" id="nav-top">A Quick Guide to TypeScript</a></h1>
+    <h1><a href="#nav-top" class="heading" id="nav-top">A Quick Guide to TypeScript</a></h1>
   </section>
 
   <section>
-    <h2><a href="#nav-test" id="nav-test">What is TypeScript</a></h2>
+    <h2><a href="#nav-test" class="heading" id="nav-test">What is TypeScript</a></h2>
 
     <p>
       TypeScript is JavaScript with a small layer of static typing on top.
@@ -174,9 +188,9 @@
   </section>
 
   <section>
-    <h2><a href="#nav-why-use" id="nav-why-use">Why should I use it?</a></h2>
+    <h2><a href="#nav-why-use" class="heading" id="nav-why-use">Why should I use it?</a></h2>
 
-    <h3><a href="#nav-static-typing" id="nav-static-typing">Static Typing</a></h3>
+    <h3><a href="#nav-static-typing" class="heading" id="nav-static-typing">Static Typing</a></h3>
 
     <aside>
       <p>
@@ -191,7 +205,7 @@
       If you don't believe me, why not go listen to <a href="https://www.youtube.com/watch?v=1PhArSujR_A&feature=youtu.be&t=15m47s">John Carmack</a> say the same thing? He's a pretty smart guy.
     </p>
 
-    <h3><a href="#nav-ecosystem" id="nav-ecosystem">You get the whole JavaScript ecosystem, plus more</a></h3>
+    <h3><a href="#nav-ecosystem" class="heading" id="nav-ecosystem">You get the whole JavaScript ecosystem, plus more</a></h3>
 
     <p>
       TypeScript is almost JavaScript already, so it plays at least as nice with JavaScript libraries as JavaScript itself. Generally though, TypeScript plays <em>nicer</em> with JavaScript libraries than JavaScript! This is because the TypeScript community has made <a href="https://github.com/borisyankov/DefinitelyTyped">definitions</a> for almost every JavaScript library. This means we get <em>better</em> autocompletion and documentation than we do in JavaScript:
@@ -213,20 +227,20 @@
   </section>
 
   <section>
-    <h2><a href="#nav-arguments" id="nav-arguments">Common misconceptions about Typescript</a></h2>
+    <h2><a href="#nav-arguments" class="heading" id="nav-arguments">Common misconceptions about Typescript</a></h2>
 
     <p>
       If you're already sold on TypeScript, skip to the next section :-)
     </p>
 
-    <h3><a href="#nav-no-one" id="nav-no-one">No one uses it!</a></h3>
+    <h3><a href="#nav-no-one" class="heading" id="nav-no-one">No one uses it!</a></h3>
 
     <p> Oh really? </p>
 
     <img src="assets/trendgraph.png" />
     <span class="annotation"> Blue line is TypeScript, red line is CoffeeScript. TypeScript is currently exploding because at <strong>B</strong> Angular announced that they were using it in Angular 2.0. But you can see TypeScript was on a path to crush CoffeeScript even before that. :-) </span>
 
-    <h3><a href="#nav-microsoft" id="nav-microsoft">It's made by Microsoft and Microsoft is evil</a></h3>
+    <h3><a href="#nav-microsoft" class="heading" id="nav-microsoft">It's made by Microsoft and Microsoft is evil</a></h3>
 
     <p>
       The Microsoft of today is not the Microsoft of 10 years ago. Possibly to counteract the ill-will they've accrued over the years, Microsoft has done a lot of public, open-source good. In the past year alone, they've:
@@ -242,7 +256,7 @@
       "Yeah, but Microsoft could <em>still</em> be evil. This could all be a long con to screw us over later. Somehow. Despite open sourcing all their core products and making them crossplatform." I think you're just being stubborn now. You must realize that recently they have been at worst an <em>average</em> amount of evil, probably less evil than Facebook and certainly less evil than Apple. And we use Facebook and Apple products all the time, so why not use an open source altjs that Microsoft put out?
     </p>
 
-    <h3><a href="#nav-the-world-moved-on" id="nav-the-world-moved-on">People are going to forget about it in a year</a></h3>
+    <h3><a href="#nav-the-world-moved-on" class="heading" id="nav-the-world-moved-on">People are going to forget about it in a year</a></h3>
 
     <p>
       Have you been on the front-end for a while? This reasoning applies to <em>every technology we use</em>. If you're using any JavaScript framework or CSS precompiler, you're probably using technologies that people are going to forget about one day.
@@ -258,7 +272,7 @@
       <a href="https://github.com/WebAssembly/design/blob/master/HighLevelGoals.md"> Are you sure?</a>
     </p>
 
-    <h3><a href="#nav-coffeescript-is-better" id="nav-coffeescript-is-better">CoffeeScript has nicer syntax</a></h3>
+    <h3><a href="#nav-coffeescript-is-better" class="heading" id="nav-coffeescript-is-better">CoffeeScript has nicer syntax</a></h3>
 
     <p>
       Admittedly, this is true. But <em>I don't think that better syntax is the metric upon which we should compare all programming languages</em>. I think that what we should really care about is <em>time saved programming</em>. How much time do you lose fighting JavaScript's syntax? Not too much? A few moments ordering your <code>)</code>'s, <code>]</code>'s, and <code>}</code>'s, perhaps - but then again, any code editor can usually handle that.
@@ -284,7 +298,7 @@
       Imagine how much time you could save if an entire category of time-wasting problems just disappeared.
     </p>
 
-    <h3><a href="#nav-its-fringe" id="nav-its-fringe">It's fringe, so hiring will be impossible</a></h3>
+    <h3><a href="#nav-its-fringe" class="heading" id="nav-its-fringe">It's fringe, so hiring will be impossible</a></h3>
 
     <p>
       Is CoffeeScript an impendiment to hiring today? No? Was it <em>ever?</em> Were recruiters ripping their hair out, saying "if only I could just find a decent CoffeeScript engineer?" Of course not, because even if <em>no one knew CoffeeScript</em>, any competent programmer could learn it in half a day. That's a rounding error to the amount of time it takes to onboard programmers to a codebase.
@@ -296,7 +310,7 @@
   </section>
 
   <section>
-    <h2><a href="#nav-type-annotations" id="nav-type-annotations">Type Annotations</a></h2>
+    <h2><a href="#nav-type-annotations" class="heading" id="nav-type-annotations">Type Annotations</a></h2>
     <p>
       Let's start with the most important thing:
     </p>
@@ -335,7 +349,7 @@ console.log(x * x);
       Other basic JavaScript types work in mostly the same way. TypeScript has <code>number</code> and <code>boolean</code> types. It also has <code>any</code>, which is helpful for when you're porting JavaScript code and you want to get things to work first before refining the types.
     </p>
 
-    <h3><a href="#nav-lists" id="nav-lists">Lists</a></h3>
+    <h3><a href="#nav-lists" class="heading" id="nav-lists">Lists</a></h3>
 
     <p>
       TypeScript splits array types into two categories:
@@ -350,7 +364,7 @@ console.log(x * x);
       We naturally specify the types of these in different ways.
     </p>
 
-    <h4><a href="#nav-homogenous" id="nav-homogenous"> Homogenous </a></h4>
+    <h4><a href="#nav-homogenous" class="heading" id="nav-homogenous"> Homogenous </a></h4>
 
     <p>
       Easy: we use square brackets. If we have a list of <code>number</code>s, we just say <code>number[]</code>.
@@ -360,7 +374,7 @@ var testScores: number[] = [98, 82, 80, 91, 100, 36];
       </pre>
     </p>
 
-    <h4><a href="#nav-heterogenous" id="nav-heterogenous"> Heterogenous </a></h4>
+    <h4><a href="#nav-heterogenous" class="heading" id="nav-heterogenous"> Heterogenous </a></h4>
 
     <aside>
       <p>
@@ -380,13 +394,13 @@ var testScores: number[] = [98, 82, 80, 91, 100, 36];
 var person: [string, string, number] = ["Some", "Person", 32];
    </pre>
 
-   <h3><a href="#nav-objects" id="nav-objects"> Objects </a></h3>
+   <h3><a href="#nav-objects" class="heading" id="nav-objects"> Objects </a></h3>
 
    <p>
     Again, TypeScript splits objects into two categories, based on typical JavaScript usage. We have key-value objects that have arbitrarily many key-value pairs of the same type, and record type objects that have a fixed size, but without any guarantees on the contents.
    </p>
 
-   <h4><a href="#nav-keyvalue" id="nav-keyvalue"> Arbitrarily large key-value stores </a></h4>
+   <h4><a href="#nav-keyvalue" class="heading" id="nav-keyvalue"> Arbitrarily large key-value stores </a></h4>
 
    <pre>
 var occupationsForPeople: {[key: string]: string} = {
@@ -396,7 +410,7 @@ var occupationsForPeople: {[key: string]: string} = {
 };
   </pre>
 
-  <h4><a href="#nav-records" id="nav-records"> Records </a></h4>
+  <h4><a href="#nav-records" class="heading" id="nav-records"> Records </a></h4>
 
   <p> Let's rewrite our person object from before as an object instead of an array: </p>
 
@@ -447,7 +461,7 @@ console.log(guy.firstName);
       You could just rename mycode.js to mycode.ts and <em>it would compile!</em> Then you could add in type annotations as necessary. This is the advantage of the superset approach.
     </p>
 
-    <h3><a href="#nav-functions" id="nav-functions"> Functions </a></h3>
+    <h3><a href="#nav-functions" class="heading" id="nav-functions"> Functions </a></h3>
 
     <p>
       Alright, let's talk a little about functions. In TypeScript, a function looks pretty much exactly like a function in JavaScript, except with type annotations! (Sounds familiar.)
@@ -473,7 +487,7 @@ var getGreeting: (name: string, age: number) => string = function(name: string, 
       Alright, this looks quite redundant, but remember: we would not normally type out the function type, since TypeScript can infer it for us!
     </p>
 
-    <h3><a href="#nav-union-types" id="nav-union-types"> Union Types </a></h3>
+    <h3><a href="#nav-union-types" class="heading" id="nav-union-types"> Union Types </a></h3>
 
     <p>
       I'm sure you've used a library like jQuery that allow you to pass in, say, a string <strong>or</strong> a number into a function, and the function handles the two different types appropriately. For example, the <code>css</code> function of jQuery. In normal JavaScript:
@@ -518,13 +532,13 @@ function css(propertyName: string, value: string|number): JQuery {
   </section>
 
   <section>
-    <h2><a href="#nav-es6-yay" id="nav-es6-yay"> ES6! </a></h2>
+    <h2><a href="#nav-es6-yay" class="heading" id="nav-es6-yay"> ES6! </a></h2>
 
     <p>
       Type annotations are one half of why TypeScript is cool. The other half is the new features coming in from ES6(+). I'll take you on a quick tour. Remember: these are all features that will land in JavaScript soon. You just get to use them sooner (and without having to worry about cross-browser compatibility).
     </p>
 
-    <h4><a href="#nav-lambda-syntax" id="nav-lambda-syntax"> More convenient lambda syntax </a></h4>
+    <h4><a href="#nav-lambda-syntax" class="heading" id="nav-lambda-syntax"> More convenient lambda syntax </a></h4>
 
     <p>
       Instead of writing this:
@@ -558,7 +572,7 @@ console.log(squareNumbers);
       And then in a few weeks you'll end up writing 100% Haskell. :-)
     </p>
 
-    <h4><a href="#nav-classes" id="nav-classes"> Classes </a></h4>
+    <h4><a href="#nav-classes" class="heading" id="nav-classes"> Classes </a></h4>
 
     <p>
       Ah yes, OOP! Everyone loves OOP, right? Right..?
@@ -624,7 +638,7 @@ var nicePerson = new Person("Some Person", 32, "brown");
 console.log(nicePerson.description);
 </pre>
 
-    <h4><a href="#nav-string" id="nav-string"> String interpolation </a></h4>
+    <h4><a href="#nav-string" class="heading" id="nav-string"> String interpolation </a></h4>
 
     <p>
       I admit, this is straight up syntactic sugar. Still: It's very nice to have.
