@@ -12,7 +12,9 @@
 
       <style>
         /*
-          TODO: headers get really tiny for some reason...
+          TODO:
+            * headers get really tiny for some reason...
+            * asides are in the wrong place in MOBILE MODE
         */
 
         h1, h2, h3, h4, h5, h6 {
@@ -29,7 +31,7 @@
         }
 
         h1 {
-          margin-bottom: 10px;
+          margin-bottom: 0;
         }
 
         .author {
@@ -91,7 +93,7 @@
         aside {
           border-top: 1px solid rgb(232, 229, 229);
           border-bottom: 1px solid rgb(232, 229, 229);
-
+          font-size: 16px;
           color: gray;
         }
 
@@ -141,6 +143,7 @@
           overflow-y: scroll;
           background-color: rgb(248, 248, 248);
           font-size: 14px;
+          box-shadow: inset -1px 0px 10px -5px rgb(102, 102, 102);
         }
 
         nav a {
@@ -154,29 +157,37 @@
           font-size: 24px;
         }
 
+        .nav-selected {
+          /* selected stuff */
+          background-color: rgb(236, 236, 236);
+        }
+
         .nav-padding {
           padding: 30px 20px 0 20px;
+        }
+
+        .nav-item {
+          padding-top: 3px;
+
+          transition:background-color .2s;
+          -webkit-transition:background-color .2s;
         }
 
         .nav-item-2 {
           padding-left: 0px;
           font-size: 16px;
-          padding-top: 3px;
         }
 
         .nav-item-3 {
           padding-left: 20px;
-          padding-top: 3px;
         }
 
         .nav-item-4 {
           padding-left: 40px;
-          padding-top: 3px;
         }
 
         .nav-item-5 {
           padding-left: 60px;
-          padding-top: 3px;
         }
       </style>
   </head>
@@ -196,7 +207,7 @@
   </section>
 
   <section>
-    <h2><a href="#nav-test" class="heading" id="nav-test">What is TypeScript</a></h2>
+    <h2><a href="#nav-what-is" class="heading" id="nav-what-is">What is TypeScript</a></h2>
 
     <p>
       TypeScript is JavaScript with a small layer of static typing on top.
@@ -559,6 +570,71 @@ function css(propertyName: string, value: string|number): JQuery {
   }
 }
 </pre>
+
+    <h3><a href="#nav-enumerations" class="heading" id="nav-enumerations"> Enumerations </a></h3>
+
+    <p>
+      Consider the following code:
+    </p>
+
+    <pre>
+function getDamageDealtByMonster(monsterType) {
+  if (monsterType === "Gremlin") {
+    return 2;
+  }
+
+  if (monsterType === "Goblin") {
+    return 1;
+  }
+
+  if (monsterType === "Dragon") {
+    return 10;
+  }
+
+  console.error("Whoops, bad monster type!");
+}
+    </pre>
+
+    <p>
+      If we were to port this code to TypeScript, we'd probably choose <code>monsterType</code> to be a <code>string</code>. But that leaves us with some problems - if you pass in an invalid <code>monsterType</code>, the code will just crash. A better choice would be to use an <code>enumeration</code>.
+    </p>
+
+    <p>
+      An enumeration allows you to say "this value can be one of a couple of discrete values." In the above case, we could say that <code>monsterType</code> could only be a <code>gremlin</code>, <code>goblin</code> or <code>dragon</code>. Here's how we would specify that in TypeScript:
+    </p>
+
+    <pre>
+enum MonsterType {
+  Gremlin,
+  Goblin,
+  Dragon
+};
+    </pre>
+
+    <p>
+      Now we can use <code>MonsterType</code> in our code, and any variable with that type can only take one of those 3 values.
+    </p>
+
+    <pre>
+function getDamageDealtByMonster(type: MonsterType) {
+  if (monsterType === MonsterType.Gremlin) {
+    return 2;
+  }
+
+  if (monsterType === MonsterType.Goblin) {
+    return 1;
+  }
+
+  if (monsterType === MonsterType.Dragon) {
+    return 10;
+  }
+}
+    </pre>
+
+    <p>
+      The best part about this is that we don't even need to have the <code>console.error</code>, because the type system ensures for us that only valid values get in.
+    </p>
+
   </section>
 
   <section>
@@ -686,7 +762,7 @@ console.log(nicePerson.description);
     <h3><a href="#nav-for-of" class="heading" id="nav-for-of"> for...of </a></h3>
 
     <p>
-      The <code>for...of</code> loop allows you to loop over all the values in an array or an object. Again, this is nothing revolutionary - it's just convenient, especially after being burned by how we almost had <code>for...in</code> before we realized it was broken with arrays <em>and</em> broken with objects with prototypical inheritance.
+      The <code>for...of</code> loop allows you to loop over all the values in an array or an object. Again, this is nothing revolutionary - it's just convenient, especially after being burned by how we almost had <code>for...in</code> before we realized it was broken with arrays <em>and</em> objects with prototypical inheritance.
     </p>
 
     <pre>
@@ -697,6 +773,53 @@ for (value of myArray) {
   console.log(myArray);
 }
     </pre>
+
+    <h3><a href="#nav-for-of" class="heading" id="nav-for-of"> let </a></h3>
+
+    <p>
+      So much ink has been spilled over JavaScript's lack of proper scoping. Tell me a single other language in which this makes any sense at all:
+    </p>
+
+    <pre>
+console.log(x); // logs undefined
+var x;
+    </pre>
+
+    <p>
+      To say nothing of an abomination like this:
+    </p>
+
+    <pre>
+console.log(x); // still logs undefined!
+
+if (false) {
+  var x;
+}
+    </pre>
+
+    <p>
+      It's so bad that JavaScript developers had to invent an obscure acronym IIFE (Immediately Invoked Function Expression) to describe the only way you could get sensible scope - by wrapping expressions in a function and then immediately calling that function. This is <em>insane.</em>
+    </p>
+
+    <p>
+      Fortunately, it doesn't have to be this way!
+    </p>
+
+    <p>
+      TypeScript has taken the <code>let</code> keyword from ES6. <code>let</code> works exactly the same way as variable declaration works in any sane language:
+    </p>
+
+
+    <aside>
+      <p>
+        You may notice that all my favorite features of TypeScript convert programming mistakes into errors. This is why TypeScript is great - you find your bugs faster.
+      </p>
+    </aside>
+    <pre>
+console.log(x); // error!
+let x;
+    </pre>
+
   </section>
   </body>
 </html>
